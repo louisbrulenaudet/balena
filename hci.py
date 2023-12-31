@@ -391,32 +391,3 @@ class Speech2Interact():
 
         except Exception as e:
             raise RuntimeError(f"An error occurred during speech recognition: {e}")
-
-
-# Example usage:
-if __name__ == "__main__":
-    actions = {
-        "validate": [
-            "confirm", "approve", "verify", "validate", 
-            "authenticate", "ratify", "endorse", "certify", 
-            "pass", "authorize", "accredit", "yes"
-        ],
-        "invalidate": [
-            "reject", "deny", "invalidate", "disapprove", 
-            "refuse", "void", "nullify", "revoke", 
-            "discredit", "disqualify", "abrogate", "annul", "no"
-        ]
-    }
-
-    instance = Speech2Interact(
-        actions=actions,
-        wav2vec_model="facebook/wav2vec2-large-960h", 
-        sentence_similarity_model="sentence-transformers/all-mpnet-base-v2"
-    )
-
-    while True:
-        action = instance.recognize_speech(
-            duration=3
-        )
-
-        print(action)
