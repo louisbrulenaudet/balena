@@ -1,69 +1,71 @@
-# Easy-to-Use Apple Vision wrapper for text extraction and clustering
+# BALanced Execution through Natural Activation : a human-computer interaction methodology for code running.
 [![Python](https://img.shields.io/pypi/pyversions/tensorflow.svg)](https://badge.fury.io/py/tensorflow) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Maintainer](https://img.shields.io/badge/maintainer-@louisbrulenaudet-blue)
 
-`apple-ocr` is a utility for Optical Character Recognition (OCR) that facilitates the extraction of text from images. This Python-based tool is designed to help developers, researchers, and enthusiasts in the field of text extraction and clustering. It leverages a combination of various technologies to achieve this, including the Vision framework provided by Apple.
+Speech2Interact is a voice interaction framework utilizing state-of-the-art natural language processing and audio processing models to create a system that can interpret voice commands and associate them with predefined actions. The framework leverages the power of transformers and signal processing to understand user intent via spoken language and correlates them with a series of predefined actionable responses.
 
-![Plot](https://github.com/louisbrulenaudet/apple-ocr/blob/main/scatter.png?raw=true)
+![Plot](https://github.com/louisbrulenaudet/balena/blob/main/thumbnail.png?raw=true)
 
 ## Features
-- **Text Recognition**: `apple-ocr` uses the Vision framework to recognize text within an image. It extracts recognized text and provides information about its confidence levels.
-
-- **Clustering**: The tool can perform K-Means clustering on the extracted data. It groups similar text elements together based on their coordinates.
-
-- **Interactive 3D Visualization**: `apple-ocr` offers an interactive 3D scatter plot using Plotly, displaying the clustered text elements. This visualization helps users gain insights into the distribution of text and text density.
+- **Real-time audio streaming and recording**: Record audio from the microphone in real time for processing.
+- **Speech recognition with Wav2Vec 2.0**: Use a pre-trained Wav2Vec 2.0 model to convert speech to text.
+- **Text similarity and action triggering**: Encode the transcribed text to a vector space and find the closest action using sentence similarity techniques.
+- **High-pass filtering**: Process the audio signal with a high-pass filter to enhance signal quality.
+- **Auto-correction**: Utilize the Jaccard distance to correct words in the transcribed text auto-magically.
+- **Framework flexibility**: Support for different device execution contexts, allowing for usage on both CPU and CUDA devices.
 
 ## Dependencies
-The script relies on the following Python libraries:
-- Torch
-- NumPy
-- Pandas
-- Pillow
-- Scikit-learn
-- Plotly
-- Pyobjc
+
+Below is a list of the main dependencies for Speech2Interact:
+- `ssl`: To handle SSL/TLS encryption for establishing secure connections.
+- `time`: For timing operations, such as streaming duration.
+- `warnings`: To manage runtime warnings produced during execution.
+- `nltk`: Utilized for natural language processing tasks like Jaccard distance calculations.
+- `numpy`: Provides support for large, multi-dimensional arrays and matrices, along with a collection of mathematical functions to operate on these arrays.
+- `pyaudio`: Allows for real-time audio recording and playback.
+- `scipy`: Used for signal processing, including applying the high-pass filter.
+- `torch`: An open-source machine learning framework that accelerates the path from research prototyping to production deployment.
+- `transformers`: Provides thousands of pre-trained models to perform tasks on texts such as classification, information extraction, question answering, and more.
+- `sentence_transformers`: A Python framework for state-of-the-art sentence and text embeddings.
+
+## Pre-trained Models
+
+- **Wav2Vec 2.0**: `facebook/wav2vec2-large-960h`
+- **Sentence Similarity**: `sentence-transformers/all-mpnet-base-v2`
 
 ## Usage
 Here's how you can use `apple-ocr`:
 
-1. **Installation**: Install the required libraries, including `Torch`, `NumPy`, `Pandas`, `Pillow`, `scikit-learn`, and `Plotly`.
-
+1. **Installation**: Install the required libraries, including `Torch`, `NumPy`...
 2. **Initialization**: Create an instance of the `OCR` class, providing an image to be processed.
-```python
-from ocr.apple import OCR
-from PIL import Image
-
-image = Image.open("your_image.png")
-ocr_instance = OCR(image=image)
-```
-
-3. **Text Recognition**: Use the `recognize` method to perform text recognition. It will return a structured DataFrame containing recognized text, bounding box dimensions, text density, and centroid coordinates.
-```python
-dataframe = ocr_instance.recognize()`
-```
-
-4. **Clustering**: Use the `cluster` method to perform K-Means clustering on the recognized text data. This method assigns cluster labels to each data point based on their coordinates.
-```python
-cluster_labels = ocr_instance.cluster(dataframe, num_clusters=3)
-```
-
-5. **Visualization**: Finally, use the `scatter` method to create an interactive 3D scatter plot. This plot visualizes the clustered text elements, including centroids, text density, and more.
-```python
-ocr_instance.scatter()
-```
-
-## Example
-Here's an example of the entire process:
 
 ```python
-from ocr.apple import OCR
-from PIL import Image
+from hci import Speech2Interact
 
-image = Image open("your_image.png")
-ocr_instance = OCR(image=image)
-dataframe = ocr_instance.recognize()
-cluster_labels = ocr_instance.cluster(dataframe, num_clusters=3)
-ocr_instance.scatter()
+actions = {
+    "validate": [
+        "confirm", "approve", "verify", "validate", 
+        "authenticate", "ratify", "endorse", "certify", 
+        "pass", "authorize", "accredit", "yes"
+    ],
+    "invalidate": [
+        "reject", "deny", "invalidate", "disapprove", 
+        "refuse", "void", "nullify", "revoke", 
+        "discredit", "disqualify", "abrogate", "annul", "no"
+    ]
+}
+
+instance = Speech2Interact(
+    actions=actions,
+    wav2vec_model="facebook/wav2vec2-large-960h", 
+    sentence_similarity_model="sentence-transformers/all-mpnet-base-v2"
+)
+
+
+action = instance.recognize_speech(
+		duration=3
+)
 ```
+The `recognize_speech` function captures audio for a set duration, processes the audio, and attempts to match the spoken words with a predefined action.
 
 ## Citing this project
 If you use this code in your research, please use the following BibTeX entry.
@@ -71,8 +73,8 @@ If you use this code in your research, please use the following BibTeX entry.
 ```BibTeX
 @misc{louisbrulenaudet2023,
 	author = {Louis Brulé Naudet},
-	title = {Easy-to-Use Apple Vision wrapper for text extraction and clustering},
-	howpublished = {\url{https://github.com/louisbrulenaudet/apple-ocr}},
+	title = {BALanced Execution through Natural Activation : a human-computer interaction methodology for code running},
+	howpublished = {\url{https://github.com/louisbrulenaudet/balena}},
 	year = {2023}
 }
 
