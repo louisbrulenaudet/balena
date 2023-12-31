@@ -1,7 +1,7 @@
 # BALanced Execution through Natural Activation : a human-computer interaction methodology for code running.
 [![Python](https://img.shields.io/pypi/pyversions/tensorflow.svg)](https://badge.fury.io/py/tensorflow) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) ![Maintainer](https://img.shields.io/badge/maintainer-@louisbrulenaudet-blue)
 
-Speech2Interact is a voice interaction framework utilizing state-of-the-art natural language processing and audio processing models to create a system that can interpret voice commands and associate them with predefined actions. The framework leverages the power of transformers and signal processing to understand user intent via spoken language and correlates them with a series of predefined actionable responses.
+BALENA is a voice interaction framework utilizing state-of-the-art natural language processing and audio processing models to create a system that can interpret voice commands and associate them with predefined actions. The framework leverages the power of transformers and signal processing to understand user intent via spoken language and correlates them with a series of predefined actionable responses.
 
 ![Plot](https://github.com/louisbrulenaudet/balena/blob/main/thumbnail.png?raw=true)
 
@@ -42,7 +42,7 @@ Here's how you can use `apple-ocr`:
 from hci import Speech2Interact
 
 actions = {
-    "validate": [
+		"validate": [
         "confirm", "approve", "verify", "validate", 
         "authenticate", "ratify", "endorse", "certify", 
         "pass", "authorize", "accredit", "yes"
