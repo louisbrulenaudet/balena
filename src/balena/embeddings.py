@@ -8,11 +8,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import os
+
 import faiss
 import logging
 import numpy as np
-import os
-import pandas as pd
 
 import scipy.spatial.distance as distance
 from sentence_transformers import SentenceTransformer

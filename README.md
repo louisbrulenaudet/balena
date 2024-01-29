@@ -39,7 +39,7 @@ Here's how you can use `apple-ocr`:
 2. **Initialization**: Create an instance of the `OCR` class, providing an image to be processed.
 
 ```python
-from hci import Speech2Interact
+from balena.hci import Speech2Interact
 
 actions = {
 		"validate": [
@@ -59,7 +59,6 @@ instance = Speech2Interact(
     wav2vec_model="facebook/wav2vec2-large-960h", 
     sentence_similarity_model="sentence-transformers/all-mpnet-base-v2"
 )
-
 
 action = instance.recognize_speech(
 		duration=3
